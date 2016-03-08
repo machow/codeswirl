@@ -1,0 +1,39 @@
+[contenteditable] {
+  -webkit-user-modify: read-write-plaintext-only;
+}
+
+.response-container {
+  position: relative;
+  width: 500px;
+  height: 200px;
+}
+
+.response-container > .response-text {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 500px;
+  height: 100px;
+
+  font-family: monospace;
+}
+
+.response-field {
+  background: transparent;
+}
+
+.part-add {
+  background-color: red;
+}
+
+.part-ok {
+}
+
+.part-del {
+  display: none;
+}
+
+.part-del + span {
+  text-decoration: underline;
+  text-decoration-color: green;
+}

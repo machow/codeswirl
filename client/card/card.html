@@ -1,0 +1,20 @@
+<div>
+  <span ng-if="vm.showFront">front: {{ vm.card.front }}</span> <br>
+  <span ng-if="vm.showBack">back: {{ vm.card.back }}</span><br>
+
+  <div class="response-container">
+    <pre class="response-text" pb-response-mark parts="vm.parts"></pre>
+    <pre pb-contenteditable
+          class="response-text response-field" 
+          ng-model="vm.answer"></pre>
+  </div>
+
+
+  <button ng-click="vm.toggle('showBack')">Show Back</button>
+  <button ng-click="vm.diffBack(vm.answer)">submit</button>
+  <br>
+  <span>Diff by:</span>
+    <button ng-click="vm.setDiffTool('diffWords')">diff words</button>
+    <button ng-click="vm.setDiffTool('diffChars')">diff characters</button>
+
+</div>

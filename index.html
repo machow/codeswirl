@@ -1,0 +1,10 @@
+<head>
+  <title>Punch some bits</title>
+</head>
+<body ng-app="app">
+  <pb-card card="DeckService.focus"></pb-card> 
+  <br><br>
+  <button ng-click="DeckService.goPrev()">prev card</button>
+  <button ng-click="DeckService.goNext()">next card</button>
+  <span>Card #: {{DeckService.indx}}</span>
+</body>
