@@ -17,7 +17,7 @@ function CardController($scope){
     vm.toggle = (prop) => vm[prop] = !vm[prop]
     
     vm.diffBack = function(answer) { 
-        vm.parts = JsDiff.diffWords(vm.card.back, answer);
+        vm.parts = JsDiff[vm.diffTool](vm.card.back, answer);
     };
 
     vm.setDiffTool = function(toolname) {
