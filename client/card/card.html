@@ -1,20 +1,47 @@
-<div>
-  <span ng-if="vm.showFront">front: {{ vm.card.front }}</span> <br>
-  <span ng-if="vm.showBack">back: {{ vm.card.back }}</span><br>
+<div class="lock-size" layout="row" layout-align="left center">
 
-  <div class="response-container">
-    <pre class="response-text" pb-response-mark parts="vm.parts"></pre>
-    <pre pb-contenteditable
-          class="response-text response-field" 
-          ng-model="vm.answer"></pre>
+  <!-- vm.menuFab Case 1: use FAB speed dial -->
+  <!-- currently set false, since I'm not sure the speed dial is useful... -->
+  <div ng-if="false">
+    <md-fab-speed-dial class="md-fling"
+                      md-open="vm.menuOpen"
+                      md-direction="right">
+      <md-fab-trigger class="align-with-text"
+                      ng-hide="vm.menuHide">
+        <md-button aria-label="menu" class="md-fab md-primary">
+          <md-icon md-font-set="material-icons">menu</md-icon>
+        </md-button>
+      </md-fab-trigger>
+      <!-- <md-toolbar> -->
+        <md-fab-actions class="md-toolbar-tools">
+          <md-button ng-click="vm.setMode('new')">
+            <md-icon md-font-set="material-icons">add_circle_outline</md-icon>
+          </md-button>
+          <md-button ng-click="vm.setMode('edit')">
+            <md-icon md-font-set="material-icons">edit</md-icon>
+          </md-button>
+          <md-button ng-click="vm.setMode('review')">
+            <md-icon md-font-set="material-icons">school</md-icon>
+          </md-button>
+        </md-fab-actions>
+      <!-- </md-toolbar> -->
+    </md-fab-speed-dial>
   </div>
 
-
-  <button ng-click="vm.toggle('showBack')">Show Back</button>
-  <button ng-click="vm.diffBack(vm.answer)">submit</button>
-  <br>
-  <span>Diff by:</span>
-    <button ng-click="vm.setDiffTool('diffWords')">diff words</button>
-    <button ng-click="vm.setDiffTool('diffChars')">diff characters</button>
-
+  <!-- vm.menuFab Case 2: just use speed dial buttons -->
+  <!-- FAB speed dial does not have an md-keep-open option :( -->
+  <div ng-if="true">
+        <md-button  ng-repeat="entry in vm.menuButtons"
+                    ng-click="vm.setMode(entry.name)"
+                    ng-class="{'md-accent': vm.getMode(entry.name)}">
+          <md-icon md-font-set="material-icons">{{ entry.icon }}</md-icon>
+        </md-button>
+  </div>
 </div>
+
+<!-- Card -->
+<pb-card-edit ng-if="vm.getMode('create')"></pb-card-edit>
+<pb-card-edit ng-show="vm.getMode('edit')" 
+        card="vm.focus"></pb-card-edit>
+<pb-card-review ng-show="vm.getMode('review')" 
+        card="vm.focus" deck="vm.deck"></pb-card-review>

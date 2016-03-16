@@ -1,6 +1,4 @@
-angular.module('app', ['angular-meteor'])
-       .run(function($rootScope, DeckService) { DeckService.queryCards(); $rootScope.DeckService = DeckService});
-
+angular.module('app', ['angular-meteor', 'ngMaterial', 'vAccordion', 'accounts.ui'])
 
 function onReady() {
     angular.bootstrap(document, ['app']);

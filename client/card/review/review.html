@@ -1,0 +1,22 @@
+<div class="card card-review">
+  <span ng-if="vm.showFront">front: {{ vm.card.front }}</span> <br>
+  <span ng-if="vm.showBack">back: {{ vm.card.back }}</span><br>
+
+  <div class="outline response-container">
+    <pre class="response-text" pb-response-mark parts="vm.parts"
+                               ></pre>
+    <pre class="response-text response-field" 
+                               pb-contenteditable ng-model="vm.answer"
+                               ></pre>
+  </div>
+
+
+  <md-button ng-click="vm.toggle('showBack')">Show Back</md-button>
+  <md-button ng-click="vm.submit()">Submit</md-button>
+  <md-button ng-click="vm.nextCard()">next Card</md-button>
+  <br>
+  <span>Diff by:</span>
+    <md-button ng-click="vm.setDiffTool('diffWords')">diff words</md-button>
+    <md-button ng-click="vm.setDiffTool('diffChars')">diff characters</md-button>
+
+</div>

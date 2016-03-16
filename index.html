@@ -1,10 +1,22 @@
 <head>
   <title>Punch some bits</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body ng-app="app">
-  <pb-card card="DeckService.focus"></pb-card> 
-  <br><br>
-  <button ng-click="DeckService.goPrev()">prev card</button>
-  <button ng-click="DeckService.goNext()">next card</button>
-  <span>Card #: {{DeckService.indx}}</span>
+<body ng-app="app" layout="column">
+  <div layout="row">
+    <!-- Sidebar -->
+    <md-sidenav flex-gt-sm="20" id="sidebar" md-is-locked-open="$mdMedia('gt-sm')"> 
+      <!-- Card Deck -->
+      <login-buttons></login-buttons>
+      <pb-deck></pb-deck>
+    </md-sidenav>
+
+    <div flex="5"></div>
+
+    <!-- Content Box -->
+    <md-content flex-gt-sm="50" flex="80" id="content">
+      <pb-card mode="DeckService.mode" deck="DeckService.deck" focus="DeckService.focus"></pb-card>
+    </md-content>
+    <div flex-gt-sm="25" flex="10"></div>
+  </div>
 </body>

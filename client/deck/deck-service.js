@@ -1,56 +1,39 @@
 angular.module('app')
        .factory('DeckService', DeckService);
 
-function DeckService() {
+function DeckService($reactive) {
+    // track focus card
+    // update focus pos on change
     var service = {
-        cards: [],
-        indx: null,
-        focus: null,
-        getPrev: () => service.cards[service.indx - 1],
-        getNext: () => service.cards[service.indx + 1],
-        goPrev: () => go(service.indx-1),
-        goNext: () => go(service.indx+1),
-        queryCards: queryCards,
+        focus: {},
+        deck: [],
+        changeFocus: changeFocus,
+        changeDeck: changeDeck,
+        focusEmptyCard: focusEmptyCard,
+        focusIfEmpty: focusIfEmpty
     };
-    return service
 
+    service.focusEmptyCard()
+    return service;
 
-    function go(indx) {
-        if (service.cards[indx]) {
-            service.indx = indx;
-            service.focus = service.cards[indx];
-            return service.focus
-        }
-        else return null
+    function changeFocus(card){
+        console.log('focusing...');
+        service.focus = card;
     }
 
-    function queryCards() {
-        service.cards = [
-            {
-                front: 'Git: list all untracked files',
-                back:  'git ls-files --others --exclude-standard',
-                alt: ['a', 'b', 'c'],
-                src: 'stackoverflow.com',
-                srcType: 'url',
-                data: {
-                },
-                owner: 'michael',
-                id: 1
-            },
-            {
-                front: 'R: use lower triangle to make matrix M symmetric',
-                back:  'M[upper.tri(M)] = t(M)[upper.tri(M)]',
-                alt: ['a', 'b', 'c'],
-                src: 'stackoverflow.com',
-                srcType: 'url',
-                data: {
-                },
-                owner: 'michael',
-                id: 2
-            }
+    function changeDeck(deck){
+        service.deck = deck;
 
-        ];
+        if (service.focus.isEmpty && service.deck[0]) 
+            service.focus = service.deck[0];
+    }
 
-        return go(0);
+    function focusEmptyCard(){
+        service.focus = { isEmpty: true};
+    }
+
+    function focusIfEmpty(card){
+        var newFocus = card ? card : service.deck[0];
+        if (service.focus.isEmpty && newFocus) service.focus = newFocus;
     }
 }

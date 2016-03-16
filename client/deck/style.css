@@ -1,0 +1,6 @@
+.deck {
+}
+
+.deck.focus {
+  background-color: lightblue;
+}

@@ -1,0 +1,39 @@
+<div>
+
+
+  <!-- Filter Pane -->
+  <v-accordion class="vAccordion--default" multiple>
+    <v-pane>
+      <v-pane-header>Filter</v-pane-header>
+      <v-pane-content>
+      <!-- Filter Inputs -->
+        <md-input-container class="md-block">
+          <label>Tag</label>
+          <input ng-model="vm.filter.tag">
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Group</label>
+          <input ng-model="vm.filter.group">
+        </md-input-container>
+
+        <md-datepicker ng-model="vm.filter.date" md-placeholder="Enter date"> </md-datepicker> 
+
+      </v-pane-content>
+    </v-pane>
+  </v-accordion>
+  <!-- Card Feed -->
+  <md-divider></md-divider>
+  <md-list class="md-dense">
+    <md-list-item ng-repeat="card in vm.cards track by card._id"
+        class="deck md-2-line noright"
+        ng-click="vm.changeFocus(card)"
+        ng-class="{'focus': vm.isFocused(card)}">
+
+      <div class="md-list-item-text" layout="column">
+        <h3>{{ card.front }}</h3>
+        <h4>{{card.nextReview | date : 'h:mma d MMM yy'}}</h4>
+      </div>
+
+    </md-list-item>
+  </md-list>
+</div>

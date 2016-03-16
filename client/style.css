@@ -1,0 +1,19 @@
+/*#sidebar {
+  max-width: 200px;
+}*/
+
+#content {
+  align-content: center;
+}
+.outline {
+  border: solid 1px;
+}
+
+#mode-options {
+  text-align: center;
+  padding: 0px;
+}
+
+#mode-options > li {
+  clear: both;
+}

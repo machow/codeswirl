@@ -1,0 +1,23 @@
+{
+  "name": "client",
+  "version": "0.0.0",
+  "homepage": "https://github.com/machow/codeswirl",
+  "authors": [
+    "Michael Chow <machow@princeton.edu>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "v-accordion": "^1.5.2"
+  },
+  "ignoredDependencies": [
+    "angular",
+    "angular-animate"
+  ]
+}

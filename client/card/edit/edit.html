@@ -1,0 +1,30 @@
+<div class="card">
+
+  <form name="cardForm">
+    <!-- Front -->
+    <md-input-container class="md-block">
+      <label>Front</label>
+      <input ng-model="vm.card.front">
+    </md-input-container>
+    <!-- Back -->
+    <md-input-container class="md-block">
+      <label>Back</label>
+      <textarea ng-model="vm.card.back" md-maxlength="400"></textarea>
+    </md-input-container>
+
+    <p>{{vm.alt}}</p>
+
+    <md-input-container class="md-block">
+      <label>Source</label>
+      <input ng-model="vm.card.src">
+    </md-input-container>
+
+    <md-datepicker ng-model="vm.card.nextReview" md-placeholder="Enter Date"></md-datepicker>
+
+    <p>{{ vm.owner }}</p>
+  </form>
+
+  <button ng-click="vm.submit()">Submit</button>
+
+</div>
+

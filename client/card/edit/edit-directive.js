@@ -1,15 +1,16 @@
 angular.module('app')
-       .directive('pbCard', pbCard);
+       .directive('pbCardEdit', pbCardEdit);
 
-function pbCard() {
+function pbCardEdit() {
     return {
         restrict: 'E',
-        templateUrl: 'client/card/card.html',
+        templateUrl: 'client/card/edit/edit.html',
         scope: {
             card: '='
         },
-        controller: 'CardController',
+        controller: 'CardEditController',
         controllerAs: 'vm',
         bindToController: true,
     }
 }
+
